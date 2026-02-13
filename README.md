@@ -11,8 +11,8 @@
   <img src="Foto de perfil (2).jpeg" width="200"/>
 </p>
 
-# Nombre:
-# Rol:
-# Ubicación:
-# Perfil:
-# Fotografía: 
+## Nombre:
+## Rol:
+## Ubicación:
+## Perfil:
+- Fotografía: 
