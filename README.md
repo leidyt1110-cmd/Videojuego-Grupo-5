@@ -11,7 +11,9 @@
   <img src="Foto de perfil (2).jpeg" width="200"/>
 </p>
 
-[Foto personal](juan/foto.jpg)
 
 
+<p align="center">
+  <img src="foto personal" (juan/foto.jpg)width="200"/>
+</p>
 
