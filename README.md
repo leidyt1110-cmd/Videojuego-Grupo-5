@@ -16,7 +16,7 @@
 
 
 <p align="center">
-  <img src="(Juan /foto personal.png)" width="200"/>
+  <img src="(Juan /foto2%personal.jpg)" alt="foto personal de juan width="200"/>
 </p>
 
 ![Mi Foto Personal](juan /foto personal.png)
