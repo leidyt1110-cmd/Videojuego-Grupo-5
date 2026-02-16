@@ -1,11 +1,9 @@
-# Videojuego-Grupo-5
 
-# Presentación integrantes del grupo
 
-## Hola soy leidy Pérez
-## El rol escogido en el grupo es de liderar y programar para llevar a cabo el proyecto dentro de esta actividad
+## Hola mi nombre es juan Torres
+## Mi rol es participar activamente en la elaboración, corrección de cada punto establecido en la actividad.
 ## Ubición: Sogamoso
-## Perfil: Diseñadora gráfica con 2 años de experiencia apasionada por la comunicación audiovisual, tengo 24 años de edad soy tecnologa en producción de medios audiovisuales actualmente estudiante del programa de ingenieria de multimedia lo que me a permitido ampliar mis conocimientos y desarrollar nuevas habilidades en la programación, creación de páginas web, videojuegos, diseño digital y sonido, me motiva combinar la creatividad y la tecnología para generar nuevos productos interactivos
+## Perfil estudiante de ingeniería multimedia, tengo 22 años, me gusta el anime, videojuegos y ver futbol, lo que me a permitido adquirir ciertos conocimientos para implementar y diseñar proyectos digitales combinando habilidades técnicas en programación con competencias artísticas orientada en la innovación de medios digitales por ende me conecto tanto a las materias que tienen que tiene ver con lo visual. 
 - Fotografía: 
 <p align="center">
   <img src="foto personal.jpeg" width="200"/>
