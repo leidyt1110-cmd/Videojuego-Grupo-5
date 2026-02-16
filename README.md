@@ -10,14 +10,3 @@
 <p align="center">
   <img src="Foto de perfil (2).jpeg" width="200"/>
 </p>
-
-
-
-
-
-<p align="center">
-  <img src="(Juan /foto2%personal.jpg)" alt="foto personal de juan width="200"/>
-</p>
-
-![Mi Foto Personal](juan /foto personal.png)
-
