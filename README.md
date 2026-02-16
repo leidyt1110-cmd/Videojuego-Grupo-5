@@ -12,5 +12,12 @@
 </p>
 
 
+
+
+
+<p align="center">
+  <img src="(Juan /foto personal.png)" width="200"/>
+</p>
+
 ![Mi Foto Personal](juan /foto personal.png)
 
