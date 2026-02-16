@@ -13,7 +13,4 @@
 
 
 
-<p align="center">
-  <img src="foto personal" (juan/foto.jpg)width="200"/>
-</p>
 
