@@ -10,7 +10,7 @@ UNAD - Multimedia Engineering
 
 ## Location
 
-Duitama, Boyacá, Colombia
+Paipa, Boyacá, Colombia
 
 ## About Me
 
