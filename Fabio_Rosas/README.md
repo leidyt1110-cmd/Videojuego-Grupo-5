@@ -10,7 +10,7 @@ UNAD - Multimedia Engineering
 
 ## Location
 
-Paipa, Boyacá, Colombia
+Paipa, Boyacá, Colombia.
 
 ## About Me
 
