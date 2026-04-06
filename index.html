@@ -4,58 +4,85 @@
   <title>Mario Lava Game!</title>
 </head>
 <body>
-  <canvas id="gameCanvas" width="1920" height="1080" style="border:1px solid black;"></canvas>
+  <canvas id="gameCanvas" width="800" height="400" style="border:1px solid black;"></canvas>
 
   <script>
     const canvas = document.getElementById("gameCanvas");
     const ctx = canvas.getContext("2d");
 
-    let x = 50;
-//Flechas, cambiar posición
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowRight") player.x += player.speed;
-      if (e.key === "ArrowLeft") player.x -= player.speed;
-      if (e.Key === "ArrowUp") player.y -= player.speed;
-      if (e.key === "ArrowDown") player.y += playeer.speed;
-    });
-//Colisión
-    function collision (a,b){
-      return(
-        a.x < b.x + b.width &&
-        a.x + a. width > b.x &&
-        a.y < b.y + b. heigth &&
-        a.y + a.heigth > b.y
-        );
-    }
-  //Enemigo
-    ctx.fillStyle = "red";
-    ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+    let player{
+      x: 20,
+      y: 60,
+      widht: 50,
+      height:70,
+      speed: 5,
+    };
+
     let enemy = {
       x: 200,
       y:170,
       width: 40,
       height: 40,
+    };
+
+    let ground ={
+      x: 30,
+      y: 50,
+      width:19,
+      height: 90,
+    };
+
+    //Flechas
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") player.x += player.speed;
+      if (e.key === "ArrowLeft") player.x -= player.speed;
+      if (e.key === "ArrowUp") player.y -= player.speed;
+      if (e.key === "ArrowDown") player.y += player.speed;
+    });
+
+    //Colisión
+    function collision (a,b){
+      return(
+        a.x < b.x + b.width &&
+        a.x + a. width > b.x &&
+        a.y < b.y + b. height &&
+        a.y + a.height > b.y
+        );
     }
 
-    ground.x -= 2;
+    //Revisión suelo
+    function onGround(player. ground){
+      return(
+        player.y + player. height >= player.y &&
+        player.x + player.width > player.x &&
+        player.x < ground.x + ground. width
+        );
+    }
+
+    let gravity = 3;
+
+    function draw(){
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+   
+    ctx.fillStyle = "red";
+    ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+
     ctx.fillStyle = "brown";
     ctx.fillRect(ground.x, ground.y, ground.width, ground.height);
 
-    if (Onground(player, ground)){
+    ctx.fillStyle = "pink";
+    ctx.fillRect(player.x, player.y, player.width, player.height);
+
+    if (OnGround(player, ground)){
       player.y = ground.y - player.height;
     }
     else{
-      console.log("Game Over");
+      player.y += gravity;
+        if (player.y > canvas.height)
+        {
+          console. log ("Game Over")
     }
-    
-    player.y +=3;
-
-    function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = "blue";
-      ctx.fillRect(x, 130, 30, 30);
-
+    }
       requestAnimationFrame(draw);
     }
 
