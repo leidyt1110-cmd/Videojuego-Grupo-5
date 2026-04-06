@@ -54,7 +54,7 @@
     function onGround(player, ground){
       return(
         player.y + player.height >= ground.y &&
-        player.x + player.width > player.x &&
+        player.x + player.width > ground.x &&
         player.x < ground.x + ground.width
         );
     }
@@ -73,14 +73,14 @@
     ctx.fillStyle = "pink";
     ctx.fillRect(player.x, player.y, player.width, player.height);
 
-    if (OnGround(player, ground)){
+    if (onGround(player, ground)){
       player.y = ground.y - player.height;
     }
     else{
       player.y += gravity;
         if (player.y > canvas.height)
         {
-          console. log ("Game Over")
+          console.log ("Game Over")
     }
     }
       requestAnimationFrame(draw);
