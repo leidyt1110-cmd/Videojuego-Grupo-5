@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mi juego</title>
+</head>
+<body>
+  <canvas id="gameCanvas" width="500" height="300" style="border:1px solid black;"></canvas>
+
+  <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let x = 50;
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") x += 10;
+      if (e.key === "ArrowLeft") x -= 10;
+    });
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "blue";
+      ctx.fillRect(x, 130, 30, 30);
+
+      requestAnimationFrame(draw);
+    }
+
+    draw();
+  </script>
+</body>
+</html>
