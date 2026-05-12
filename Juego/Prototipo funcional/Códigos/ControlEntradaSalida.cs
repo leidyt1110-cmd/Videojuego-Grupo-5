@@ -28,3 +28,4 @@ public class ControlEntradaSalida : MonoBehaviour {
         }
     }
 }
+// 
