@@ -10,3 +10,14 @@ MonoImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+// •  Core Gameplay & Physics: I developed the PlayerMovement system, implementing a physics-based controller that handles movement, jumping, 
+and collision detection. I integrated a life and scoring system that reacts dynamically to hazards like lava and standard obstacles.
+•  Visual Polish & Animation: I programmed the RotateCoin script to enhance the visual feedback of collectible items. 
+By using frame-rate independent rotation (Time.deltaTime), I improved the visibility and "game feel" of the rewards within the level.
+•  System Logic & UI Flow: I implemented the MainMenuManager to control the game's start and end states. 
+This included managing the transition between the main menu and the "Game Over" screen, as well as freezing the game engine when the player loses.
+•  Level Triggers: I established the ControlEntradaSalida script to manage the logical flow of the level,
+ triggering "START" and "VICTORY" notifications through Unity's trigger-event system.
+•  Technical Serialization: I was responsible for the management of .
+meta files and Global Identifiers (GUIDs),
+ ensuring that all script references remained consistent and functional within the Unity project architecture during the development phase.
