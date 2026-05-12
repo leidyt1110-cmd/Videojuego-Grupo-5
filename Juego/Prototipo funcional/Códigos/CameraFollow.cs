@@ -25,3 +25,12 @@ public class CameraFollow : MonoBehaviour
         transform.position = smoothedPosition;
     }
 }
+
+Developed the technical description of the main character,
+focusing on the 3D free-movement system, including running, 
+jumping, and collecting coins. 
+Designed the core gameplay loop where players must navigate
+falling bricks and avoid lava hazards to reach safety. 
+Established the win/loss conditions and the competitive dynamics
+between the four players. 
+•  Collaborated on the visual organization of game elements using the Miro tool. 
