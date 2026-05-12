@@ -151,6 +151,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Reiniciar boton
     public void ReiniciarJuego()
+    
     {
         Time.timeScale = 1f;
         Debug.Log("Intentando reiniciar la escena...");
@@ -158,3 +159,17 @@ public class PlayerMovement : MonoBehaviour
     }
 
 }
+// •  Player Controller Implementation: I developed the PlayerMovement script, establishing the core physics-based movement using Unity’s Rigidbody and Vector3 translations.
+ This includes precise control over speed and jump forces.
+•  Advanced Game Mechanics: I programmed a comprehensive player state system that manages:
+Health and Scoring: A logic that tracks lives (vida) and points (puntos),
+ with specific penalties for colliding with different obstacles (standard obstacles vs. lava).
+Inventory/Collectibles: A trigger-based system for coin collection that updates the UI and triggers audio-visual
+ feedback before destroying the object to optimize memory.
+•  Animation & Audio Synchronization: I integrated the Animator component to sync movement states (Running, Jumping) with the physics engine. 
+Additionally, I implemented a spatial audio system using AudioSource.PlayOneShot to trigger sound effects for jumping, collecting items, and the Game Over state.
+•  Game State & UI Logic: I designed the Morir() (Die) function, which manages the "Game Over" transition.
+ This involves pausing the game engine (Time.timeScale = 0f), displaying final statistics on the UI, and managing cursor states for menu navigation.
+•  Collision Feedback System: I implemented collision detection using OnCollisionEnter and OnCollisionStay to distinguish between "Ground,
+" "Obstaculo," and "Lava" tags, ensuring the player interacts correctly with the environment (e.g., resetting the jump state only when grounded).
+
