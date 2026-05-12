@@ -10,3 +10,13 @@ MonoImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+// Version Control & Asset Management: I managed the synchronization of technical assets and their corresponding metadata files
+ (.meta). I ensured that scripts like ControlEntradaSalida were correctly serialized within the 
+Unity environment, maintaining the integrity of the unique
+ Global Identifiers (GUIDs) to prevent broken references during collaborative development.
+Component Integration: I configured the MonoImporter settings for the project's scripts, ensuring the correct execution order and default references.
+ This was crucial for the "Mario Lava Game"
+ to recognize player interactions without loss of data between sessions or repository updates.
+Environment Logic Setup: Using the Unity Inspector,
+ I linked the C# logic with the 3D environment, assigning the 
+"Player" tag to the character prefabs so the entry/exit triggers would function as planned in the game's architecture.
