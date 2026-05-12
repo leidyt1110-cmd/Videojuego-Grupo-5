@@ -10,3 +10,14 @@ MonoImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+// •  Player Physics and Mechanics: I developed the core PlayerMovement system, implementing a physics-based controller that manages speed, 
+jumping forces, and gravity through Unity's Rigidbody. I successfully synchronized these physics with the Animator component to ensure visual consistency during movement and jump states.
+•  Game Systems Integration: I programmed the logic for the health and scoring systems, 
+including a sophisticated collision detection system that distinguishes between different environmental hazards like
+ "Lava" and "Obstacles," applying the corresponding penalties to player stats.
+•  Audio-Visual Feedback: I implemented a spatial audio system using AudioSource to trigger sound effects for critical game events 
+(jumping, coin collection, and Game Over), enhancing the player's immersive experience.
+•  UI and Scene Management: I created the MainMenuManager and integrated it with the gameplay loop. 
+This included developing the "Game Over" logic that freezes the engine's time scale, calculates final results, and handles UI panel transitions.
+•  Metadata and Serialization Management: I managed the technical integrity of the project by maintaining the .
+meta files and Global Identifiers (GUIDs) for all scripts, ensuring seamless integration and reference stability within the Unity Editor.
