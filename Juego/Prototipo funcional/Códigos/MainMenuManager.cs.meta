@@ -10,3 +10,13 @@ MonoImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+// •  System Architecture: Developed and implemented the ControlEntradaSalida script to manage spatial triggers
+, enabling the game to recognize player entry/exit events for "START" and "VICTORY" conditions.
+•  Interface Logic: Programmed the MainMenuManager script,
+ creating a functional flow for the game's start sequence and handling the dynamic activation/deactivation of UI panels.
+•  Technical Optimization: Integrated error-handling logs (Debug.LogWarning) 
+to ensure the Unity Inspector references are correctly assigned, 
+facilitating a smoother collaborative workflow.
+•  Asset Management: Responsible for the serialization and metadata integrity of the project's scripts,
+ ensuring all Global Identifiers (GUIDs) remain consistent across the development repository.
+
