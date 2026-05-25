@@ -1,0 +1,212 @@
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour
+{
+    [Header("Movement Settings")]
+    [SerializeField] private float movementSpeed = 6.0f;
+    [SerializeField] private float jumpForce = 8.0f;
+    
+    [Header("Ground Check")]
+    [SerializeField] private Transform groundCheckPoint;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private float groundCheckRadius = 0.2f;
+
+    // References to components
+    private Rigidbody3D playerRigidbody; // Change to Rigidbody2D if your game is 2D
+    private Animator playerAnimator;
+    private AudioSource audioSource;
+
+    [Header("Audio Clips")]
+    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip coinSound;
+
+    private float horizontalInput;
+    private bool isGrounded;
+
+    void Start()
+    {
+        // Initialize and cache required components
+        playerRigidbody = GetComponent<Rigidbody3D>();
+        playerAnimator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    void Update()
+    {
+        // Get horizontal axis input (A/D or Left/Right arrows)
+        horizontalInput = Input.GetAxis("Horizontal");
+
+        // Check if the player is touching the ground layer
+        isGrounded = Physics.CheckSphere(groundCheckPoint.position, groundCheckRadius, groundLayer);
+
+        // Handle jumping mechanism
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            Jump();
+        }
+
+        // Update animation states based on physics and input
+        UpdateAnimations();
+    }
+
+    void FixedUpdate()
+    {
+        // Execute movement in FixedUpdate for stable physics calculations
+        MovePlayer();
+    }
+
+    private void MovePlayer()
+    {
+        Vector3 movement = new Vector3(horizontalInput * movementSpeed, playerRigidbody.velocity.y, 0f);
+        playerRigidbody.velocity = movement;
+
+        // Flip character sprite/mesh direction based on movement
+        if (horizontalInput > 0) transform.rotation = Quaternion.Euler(0, 90, 0);
+        else if (horizontalInput < 0) transform.rotation = Quaternion.Euler(0, -90, 0);
+    }
+
+    private void Jump()
+    {
+        playerRigidbody.velocity = new Vector3(playerRigidbody.velocity.x, jumpForce, 0f);
+        if (jumpSound != null)
+        {
+            audioSource.PlayOneShot(jumpSound);
+        }
+    }
+
+    private void UpdateAnimations()
+    {
+        // Set parameters inside the Animator Controller
+        playerAnimator.SetFloat("Speed", Mathf.Abs(horizontalInput));
+        playerAnimator.SetBool("IsGrounded", isGrounded);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // Detect collision with collectibles
+        if (other.CompareTag("Coin"))
+        {
+            Destroy(other.gameObject);
+            if (coinSound != null) audioSource.PlayOneShot(coinSound);
+            GameManager.Instance.AddScore(1);
+        }
+        
+        // Detect collision with hazard zone (Lava)
+        if (other.CompareTag("Lava"))
+        {
+            GameManager.Instance.TriggerGameOver();
+        }
+
+        // Detect collision with winning goal zone
+        if (other.CompareTag("Goal"))
+        {
+            GameManager.Instance.TriggerVictory();
+        }
+    }
+
+    // Visual aid in the editor to fine-tune the ground check radius
+    private void OnDrawGizmosSelected()
+    {
+        if (groundCheckPoint != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(groundCheckPoint.position, groundCheckRadius);
+        }
+    }
+}
+
+GameManager.cs
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class GameManager : MonoBehaviour
+{
+    // Singleton pattern instance
+    public static GameManager Instance { get; private set; }
+
+    [Header("UI Panels")]
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject victoryPanel;
+    [SerializeField] private Text scoreText;
+
+    private int currentScore = 0;
+    private bool isGameActive = true;
+
+    void Awake()
+    {
+        // Ensure only one instance of GameManager exists
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
+
+    void Start()
+    {
+        // Initialize game interface
+        UpdateScoreUI();
+        gameOverPanel.SetActive(false);
+        victoryPanel.SetActive(false);
+        Time.timeScale = 1f; // Ensure time flows normally
+    }
+
+    public void AddScore(int points)
+    {
+        if (!isGameActive) return;
+        
+        currentScore += points;
+        UpdateScoreUI();
+    }
+
+    private void UpdateScoreUI()
+    {
+        if (scoreText != null)
+        {
+            scoreText.text = "Coins: " + currentScore;
+        }
+    }
+
+    public void TriggerGameOver()
+    {
+        isGameActive = false;
+        Time.timeScale = 0f; // Freeze game physics
+        gameOverPanel.SetActive(true);
+    }
+
+    public void TriggerVictory()
+    {
+        isGameActive = false;
+        Time.timeScale = 0f; // Freeze game physics
+        victoryPanel.SetActive(true);
+    }
+
+    // Function assigned to UI Buttons to restart the level
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    // Function assigned to UI Buttons to load the main menu
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu"); // Make sure your main menu scene is named this way
+    }
+}
+MainMenuController.cs
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class MainMenuController : MonoBehaviour
+{
+    // Method to start the main game level
+    public void PlayGame()
+    {
+        SceneManager.LoadScene("GameplayScene"); // Replace with your actual game scene name
+    }
+
+    // Method to exit the compiled standalone application
+    public void QuitGame()
+    {
+        Debug.Log("Application closed successfully.");
+        Application.Quit();
+    }
+}
