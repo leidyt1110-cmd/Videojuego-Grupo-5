@@ -210,3 +210,47 @@ public class MainMenuController : MonoBehaviour
         Application.Quit();
     }
 }
+
+comments
+
+The videogame was developed using C# programming language inside Unity
+, applying good programming practices and a structured code organization.
+The source code was written entirely in English, including variables, functions, classes and comments
+, making the project easier to understand, maintain and expand.
+The project was divided into different scripts according to their functionality:
+•	PlayerController.cs → Controls player movement, jumping, animations, sounds and collisions. 
+•	GameManager.cs → Manages score system, victory, game over and UI panels. 
+•	MainMenuController.cs → Controls the main menu navigation and scene loading. 
+Several good programming practices were implemented during development, including:
+•	Meaningful variable names: 
+movementSpeed
+jumpForce
+currentScore
+horizontalInput
+isGrounded
+•	Clear and organized function names: 
+MovePlayer()
+Jump()
+UpdateAnimations()
+TriggerGameOver()
+TriggerVictory()
+RestartGame()
+LoadMainMenu()
+•	Descriptive comments explaining the functionality of each section of the code: 
+// Initialize required components
+// Handle jumping mechanism
+// Detect collision with collectibles
+// Freeze game physics
+// Load the main menu scene
+•	Modular code structure separating gameplay systems into independent methods. 
+•	Use of the Singleton design pattern in GameManager to ensure only one manager instance exists during gameplay. 
+•	Validation checks to prevent runtime errors: 
+if (jumpSound != null)
+if (scoreText != null)
+if (!isGameActive) return;
+•	Organized Unity inspector configuration using headers and serialized fields: 
+[Header("Movement Settings")]
+[SerializeField] private float movementSpeed = 6.0f;
+These practices improved readability, 
+organization and maintainability of the project,
+ allowing the team to develop a stable and functional final prototype of Mario Lava Game.
