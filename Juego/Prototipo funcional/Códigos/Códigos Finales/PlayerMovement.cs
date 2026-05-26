@@ -14,10 +14,10 @@ public class PlayerMovement : MonoBehaviour
     public GameObject panelGameOver;
     public Text textoMonedasFinal;
 
-    public AudioSource audioSource; // El altavoz del jugador
-    public AudioClip sonidoSalto;   // El audio de salto
-    public AudioClip sonidoMoneda;  // El audio de moneda
-    public AudioClip sonidoGameOver; // E audio de Game Over
+    public AudioSource audioSource; // The player's speaker
+    public AudioClip sonidoSalto;   // The jump audio
+    public AudioClip sonidoMoneda;  // The currency audio
+    public AudioClip sonidoGameOver; // Game Over audio
 
     private Rigidbody rb;
     private Animator anim;
@@ -29,8 +29,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-        if (audioSource == null) audioSource = GetComponent<AudioSource>();//reproduce el altavoz del jugador 
-        Time.timeScale = 1f; //El juego empiece desde el comienzo
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();//The player's speaker plays the
+        Time.timeScale = 1f; //The game starts from the beginning
     }
 
     void Update()
@@ -38,21 +38,21 @@ public class PlayerMovement : MonoBehaviour
         if (Time.timeScale == 0f) return;
         float move = Input.GetAxis("Vertical");
 
-        // Movimiento
+        // Motion
         transform.position += Vector3.right * move * speed * Time.deltaTime;
 
-        // Animación
+        // Animation
         anim.SetFloat("Speed", Mathf.Abs(move));
 
 
-        // Salto
+        // Leap
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
             anim.SetBool("jump", true);
 
-            if (audioSource && sonidoSalto) audioSource.PlayOneShot(sonidoSalto);//Reproducir sonido salto
+            if (audioSource && sonidoSalto) audioSource.PlayOneShot(sonidoSalto);// Play skip sound
         }
         anim.SetBool("jump", !isGrounded);
     }
@@ -79,28 +79,28 @@ public class PlayerMovement : MonoBehaviour
         
         if (other.gameObject.CompareTag("Coin"))
         {
-            // Aumentar el contador
+            // Increase counter
             monedasRecolectadas++;
             Debug.Log("Monedas: " + monedasRecolectadas);
 
-            if (audioSource && sonidoMoneda) audioSource.PlayOneShot(sonidoMoneda);//reproducir sonido moneda
+            if (audioSource && sonidoMoneda) audioSource.PlayOneShot(sonidoMoneda);// play sound coin
 
-            // Destruir la moneda para que desaparezca de la escena
+            // Destroy the coin so that it disappears from the scene
             Destroy(other.gameObject);
 
         }
     }
     void OnCollisionEnter(Collision collision)
     {
-        // CASO 1: Choca con una piedra normal (Pierde puntos)
+        // CASE 1: Collides with a normal rock (Loses points)
         if (collision.gameObject.CompareTag("Obstaculo"))
         {
             puntos -= 5;
-            if (puntos < 0) puntos = 0; // Evita puntos negativos
+            if (puntos < 0) puntos = 0; // Avoid negative points
             Debug.Log("¡Chocaste! Puntos actuales: " + puntos);
         }
 
-        // CASO 2: Cae en piedra de lava (Pierde vida y puntos)
+        // CASE 2: Falls into lava rock (Loses life and points)
         if (collision.gameObject.CompareTag("Lava"))
         {
             vida -= 1;
@@ -115,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                // Teletransporta al jugador un poco atrás para que no muera instantáneamente
+                // Teleports the player back a little so they don't die instantly
                 transform.position += Vector3.left * 1;
             }
         }
@@ -130,10 +130,10 @@ public class PlayerMovement : MonoBehaviour
             audioSource.PlayOneShot(sonidoGameOver);
         }
 
-        // Congelar el juego
+        // Freeze the game
         Time.timeScale = 0f;
 
-        // Mostrar el panel y las monedas finales
+        // Show the panel and the final coins
         if (panelGameOver != null)
         {
             panelGameOver.SetActive(true);
@@ -144,19 +144,19 @@ public class PlayerMovement : MonoBehaviour
             textoMonedasFinal.text = "Monedas: " + monedasRecolectadas;
         }
 
-        // liberar el cursor
+        // release the cursor
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
 
-    //Función botón reiniciar
+    //Reset button function
     public void ReiniciarJuego()
     {
         Time.timeScale = 1f;
         DynamicGI.UpdateEnvironment();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    //Función botón salir
+    //Exit button function
     public void SalirdelJuego()
     {
         Debug.Log("Saliendo del juego...");
