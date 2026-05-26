@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    // Apagar menú
+    // Turn off menu
     public GameObject panelDelMenu;
 
     public void StartGame()
     {
         
-        // simplemente desactivamos el menú para poder jugar.
+        // We simply deactivated the menu so we could play.
         if (panelDelMenu != null)
         {
             panelDelMenu.SetActive(false);
