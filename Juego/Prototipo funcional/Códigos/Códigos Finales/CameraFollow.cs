@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    // Personaje que seguirá la cámara xd
+    //  Character that the camera will follow
     public Transform jugador;
 
-    // Distancia entre cámara y personaje
+    //  Distance between camera and character
     public float offsetX = 3f;
 
-    // Suavidad del movimiento
+    // Smoothness of movement
     public float suavizado = 5f;
 
-    // Posición fija en Y y Z
+    // Fixed position in Y and Z
     private float posicionY;
     private float posicionZ;
 
     void Start()
     {
-        // Guardamos la posición inicial de la cámara
+        //  We saved the initial camera position
         posicionY = transform.position.y;
         posicionZ = transform.position.z;
     }
@@ -28,14 +28,14 @@ public class CameraFollow : MonoBehaviour
     {
         float nuevaX = Mathf.Max(transform.position.x, jugador.position.x + offsetX);
 
-        // Solo seguimos el eje X
+        //  We only follow the X-axis
         Vector3 objetivo = new Vector3(
             jugador.position.x + offsetX,
             posicionY,
             posicionZ
         );
 
-        // Movimiento suave
+        //  Smooth movement
         transform.position = Vector3.Lerp(
             transform.position,
             objetivo,
