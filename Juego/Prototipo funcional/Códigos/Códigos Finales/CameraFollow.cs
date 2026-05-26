@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    // Personaje que seguirá la cámara
+    // Personaje que seguirá la cámara xd
     public Transform jugador;
 
     // Distancia entre cámara y personaje
