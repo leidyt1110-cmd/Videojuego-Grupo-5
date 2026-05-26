@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class ControlEntradaSalida : MonoBehaviour {
 
-    // Puedes arrastrar un mensaje o un objeto desde el inspector
+    //  You can drag a message or an object from the inspector.
     public string mensajeEntrada = "START";
     public string mensajeSalida = "VICTORY";
 
     private void OnTriggerEnter(Collider other)
     {
-        // Verificamos que sea el Jugador quien entra
+        // We verify that it is the player who enters
         if (other.CompareTag("Player"))
         {
             Debug.Log(mensajeEntrada);
-            // Aquí puedes activar luces, abrir puertas o empezar música
+            // Here you can activate lights, open doors, or start music.
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        // Verificamos que sea el Jugador quien sale
+        //  We verify that it is the Player who leaves
         if (other.CompareTag("Player"))
         {
             Debug.Log(mensajeSalida);
-            // Aquí puedes apagar luces o cerrar puertas
+            //  Here you can turn off lights or close doors
         }
     }
 }
