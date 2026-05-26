@@ -6,58 +6,58 @@ using UnityEngine.UI;
 
 public class Controladorvictoria : MonoBehaviour
 {
-    // Panel victoria
+    // victory panel
     public GameObject panelVictoria;
 
-    // Texto monedas
+    //  Text coins
     public Text textoMonedasFinal;
 
-    // Referencia al jugador
+    //  Reference to the player
     private PlayerMovement jugador;
 
     private void Start()
     {
-        // Apagar panel al iniciar
+        //  Turn off panel on startup
         if (panelVictoria != null)
         {
             panelVictoria.SetActive(false);
         }
     }
 
-    // Cuando el jugador llega a la meta
+    //  When the player reaches the goal
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            // Obtener el script PlayerMovement
+            // Get the PlayerMovement script
             jugador = other.GetComponent<PlayerMovement>();
 
-            // Activar victoria
+            // Activate victory
             ActivarVictoria();
         }
     }
 
     void ActivarVictoria()
     {
-        // Mostrar panel
+        // Show panel
         panelVictoria.SetActive(true);
 
-        // Mostrar monedas reales
+        // Show real coins
         if (textoMonedasFinal != null && jugador != null)
         {
             textoMonedasFinal.text =
                 "Monedas: " + jugador.monedasRecolectadas;
         }
 
-        // Pausar juego
+        // Pause game
         Time.timeScale = 0f;
 
-        // Mostrar cursor
+        // Show cursor
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
 
-    //Botón reiniciar juego
+    //Restart game button
     public void ReiniciarJuego()
     {
         Time.timeScale = 1f;
@@ -68,7 +68,7 @@ public class Controladorvictoria : MonoBehaviour
         );
     }
 
-    // Botón salir
+    // exit button
     public void SalirdelJuego()
     {
         Debug.Log("Saliendo del juego...");
