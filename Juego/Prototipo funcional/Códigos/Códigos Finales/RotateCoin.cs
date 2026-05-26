@@ -8,7 +8,7 @@ public class RotateCoin : MonoBehaviour {
 
     void Update()
     {
-        // Gira la moneda en el eje Y constantemente
+        // Rotate the coin on the Y-axis constantly
         transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
     }
 }
